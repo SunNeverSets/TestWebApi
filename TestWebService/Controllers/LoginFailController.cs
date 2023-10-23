@@ -5,7 +5,7 @@ using TestWebService.DataModels;
 namespace TestWebService.Controllers
 {
     [ApiController]
-    [Route("session")]
+    [Route("api")]
     public class LoginFailController : ControllerBase
     {
         private readonly ILogger<LoginFailController> _logger;
@@ -18,7 +18,7 @@ namespace TestWebService.Controllers
         }
 
         [HttpGet("loginfailtotal")]
-        public IActionResult GetLoginFailRecords([FromQuery] LoginFailParametersDto loginFailParameters)
+        public IActionResult GetLoginFailTotal([FromQuery] LoginFailParametersDto loginFailParameters)
         {
             var query = TestData.LoginFailures.LoginFailuresData;
 

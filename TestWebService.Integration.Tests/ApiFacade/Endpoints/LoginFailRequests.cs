@@ -5,18 +5,18 @@ namespace TestWebService.Integration.Tests.ApiFacade.Endpoints
 {
     public class LoginFailRequests : WebApi
     {
-        public static ApiResponse GetLoginFailRecords(LoginFailParametersDto parameters)
+        public static ApiResponse GetLoginFailTotal(LoginFailParametersDto parameters)
         {
-            string url = $"session/loginfailtotal?{ObjToQueryString(parameters)}";
+            string url = $"api/loginfailtotal?{ObjToQueryString(parameters)}";
 
             var apiResponse = Send(HttpMethod.Get, url);
 
             return apiResponse;
         }
 
-        public static ApiResponse PutLoginFailRecord(ResetLoginFailParametersDto parameters)
+        public static ApiResponse ResetLoginFailTotal(ResetLoginFailParametersDto parameters)
         {
-            string url = $"session/resetloginfailtotal?{ObjToQueryString(parameters)}";
+            string url = $"api/resetloginfailtotal?{ObjToQueryString(parameters)}";
 
             var apiResponse = Send(HttpMethod.Put, url);
 
