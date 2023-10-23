@@ -3,7 +3,7 @@ using TestWebService.DataModels;
 
 namespace TestWebService.Integration.Tests.ApiFacade.Endpoints
 {
-    public class LoginFailRequests : WebApi
+    public class FailedLoginHistoryClient : WebApi
     {
         public static ApiResponse GetLoginFailTotal(LoginFailParametersDto parameters)
         {

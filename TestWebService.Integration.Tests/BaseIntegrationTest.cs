@@ -1,7 +1,4 @@
-﻿using TestWebService.Database.DataModels;
-using TestWebService.TestData;
-
-namespace TestWebService.Integration.Tests
+﻿namespace TestWebService.Integration.Tests
 {
     public class BaseIntegrationTest : IDisposable
     {
@@ -14,27 +11,7 @@ namespace TestWebService.Integration.Tests
 
         public void Dispose()
         {
-            LoginFailures.LoginFailuresData = new()
-            {
-                new LoginFailureDm
-                {
-                    UserName = "Shulha Volodymyr",
-                    FailureCount = 5,
-                    Id = 1
-                },
-                new LoginFailureDm
-                {
-                    UserName = "Avril Lavigne",
-                    FailureCount = 2,
-                    Id = 2
-                },
-                new LoginFailureDm
-                {
-                    UserName = "Post Malone",
-                    FailureCount = 1,
-                    Id = 3
-                }
-            };
+            _fixture.Dispose();
         }
     }
 }

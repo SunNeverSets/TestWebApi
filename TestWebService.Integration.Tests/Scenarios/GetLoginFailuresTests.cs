@@ -23,7 +23,7 @@ namespace TestWebService.Integration.Tests.Scenarios
                 FetchLimit = fetchLimit
             };
 
-            var actualResult = LoginFailRequests.GetLoginFailRecords(parameters).Content<List<LoginFailureDm>>();
+            var actualResult = FailedLoginHistoryClient.GetLoginFailTotal(parameters).Content<List<LoginFailureDm>>();
 
             actualResult.Should().BeEquivalentTo(expectedResult);
         }
@@ -31,7 +31,7 @@ namespace TestWebService.Integration.Tests.Scenarios
         public static IEnumerable<object[]> ExpectedData =
             new List<object[]>
             {
-                    // [InlineData(null, null, null)] //request without parameters
+                //request without parameters
                 new object[] { null, null, null, new List<LoginFailureDm>
                 {
                     new LoginFailureDm
@@ -53,7 +53,7 @@ namespace TestWebService.Integration.Tests.Scenarios
                         Id = 3
                     }
                 }},
-                    // [InlineData("Shulha Volodymyr", null, null)] //request with provided existing userName ONLY
+                //request with provided existing userName ONLY
                 new object[] { "Shulha Volodymyr", null, null, new List<LoginFailureDm>
                 {
                     new LoginFailureDm
@@ -63,7 +63,7 @@ namespace TestWebService.Integration.Tests.Scenarios
                         Id = 1
                     }
                 }},
-                    // [InlineData("Shulha Volodymyr", 5, 2)] //request with all provided parameters
+                //request with all provided parameters
                 new object[] { "Shulha Volodymyr", 5, 2, new List<LoginFailureDm>
                 {
                     new LoginFailureDm
@@ -73,11 +73,11 @@ namespace TestWebService.Integration.Tests.Scenarios
                         Id = 1
                     }
                 }},
-                    // [InlineData("Volodymyr Shulha", 5, 2)] //request with provided non-existing userName
+                //request with provided non-existing userName
                 new object[] { "Volodymyr Shulha", 5, 2, new List<LoginFailureDm>
                 {
                 }},
-                    // [InlineData(null, 2, null)] //request with provided failCount ONLY
+                //request with provided failCount ONLY
                 new object[] { null, 2, null, new List<LoginFailureDm>
                 {
                     new LoginFailureDm
@@ -87,7 +87,7 @@ namespace TestWebService.Integration.Tests.Scenarios
                         Id = 2
                     },
                 }},
-                    // [InlineData(null, null, 2)] //request with provided fetchLimit ONLY
+                //request with provided fetchLimit ONLY
                 new object[] { null, null, 2, new List<LoginFailureDm>
                 {
                     new LoginFailureDm

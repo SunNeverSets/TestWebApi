@@ -19,7 +19,7 @@ namespace TestWebService.Integration.Tests.Scenarios
             var userName = "Shulha Volodymyr";
             var expectedResult = $"Login failures for {userName} have been reset.";
 
-            var response = LoginFailRequests.PutLoginFailRecord(new ResetLoginFailParametersDto { UserName = userName });
+            var response = FailedLoginHistoryClient.ResetLoginFailTotal(new ResetLoginFailParametersDto { UserName = userName });
             response.EnsureSuccessful();
             var actualResult = response.ContentAsString;
             actualResult.Should().Be(expectedResult);
@@ -31,7 +31,7 @@ namespace TestWebService.Integration.Tests.Scenarios
             var userName = "Vova";
             var expectedResult = $"User {userName} not found in login failures.";
 
-            var response = LoginFailRequests.PutLoginFailRecord(new ResetLoginFailParametersDto { UserName = userName });
+            var response = FailedLoginHistoryClient.ResetLoginFailTotal(new ResetLoginFailParametersDto { UserName = userName });
             response.Ensure(HttpStatusCode.NotFound);
             var actualResult = response.ContentAsString;
             actualResult.Should().Be(expectedResult);
@@ -44,7 +44,7 @@ namespace TestWebService.Integration.Tests.Scenarios
             string userName = null;
             var expectedResult = "Username parameter is required.";
 
-            var response = LoginFailRequests.PutLoginFailRecord(new ResetLoginFailParametersDto { UserName = userName });
+            var response = FailedLoginHistoryClient.ResetLoginFailTotal(new ResetLoginFailParametersDto { UserName = userName });
             response.Ensure(HttpStatusCode.BadRequest);
             var actualResult = response.ContentAsString;
             actualResult.Should().Be(expectedResult);
