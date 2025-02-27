@@ -26,7 +26,7 @@ jobs:
       run: dotnet build --no-restore
       
     - name: Run test
-      run: dotnet test TestWebService.Integration.Tests --logger "trx;LogFileName=test-results.xml" --results-directory "test_results"
+      run: dotnet test TestWebService.Integration.Tests --logger "trx;LogFileName=vault_test_results.xml" --results-directory "test_results"
       continue-on-error: true
       
     - uses: actions/upload-artifact@v4
@@ -38,7 +38,6 @@ jobs:
     - uses: dorny/test-reporter@v1.9.0
       if: success() || failure()    # run this step even if previous step failed
       with:
-        artifact: test-results
-        name: Test Results            
-        path: 'test-results.xml'   
+        name: Ruby Decom Tests            
+        path: test_results/vault_test_results.xml  
         reporter: dotnet-trx
