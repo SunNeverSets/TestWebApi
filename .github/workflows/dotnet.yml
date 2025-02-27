@@ -8,7 +8,10 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+    
+permissions:
+        checks: write
+        
 jobs:
   build:
 
@@ -35,3 +38,4 @@ jobs:
         name: Ruby Decom Tests            
         path: test_results/vault_test_results.xml  
         reporter: dotnet-trx
+      
