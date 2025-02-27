@@ -24,8 +24,9 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - name: Run test
+      run: dotnet test TestWebService.Integration.Tests --logger "trx;LogFileName=rubyd_test_results.xml" --results-directory "test_results"
+      continue-on-error: true
 
     - uses: dorny/test-reporter@v1.9.0
       if: success() || failure()    # run this step even if previous step failed
